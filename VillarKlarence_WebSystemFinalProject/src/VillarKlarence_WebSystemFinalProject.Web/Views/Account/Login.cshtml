@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Sign in";
+    ViewData["HideNav"] = true;
+    ViewData["BodyClass"] = "app-body login-body";
+}
+<div class="login-shell">
+    <section class="login-hero" aria-labelledby="heroTitle">
+        <div class="hero-content">
+            <img src="~/images/logo.png" asp-append-version="true" alt="UST Angelicum College logo" class="hero-logo" width="150" height="150" />
+            <h1 id="heroTitle" class="hero-title">UST Angelicum College</h1>
+            <p class="hero-motto">Caritas • Justitia • Fortitudo</p>
+            <div class="gold-rule" aria-hidden="true"></div>
+            <p class="hero-text">The Student Grade Portal: faculty post and manage grades, and students see their own records the moment they are released.</p>
+            <ul class="hero-points list-unstyled">
+                <li><i class="bi bi-shield-lock" aria-hidden="true"></i> Secured with ASP.NET Core Identity &amp; JWT</li>
+                <li><i class="bi bi-calculator" aria-hidden="true"></i> Remarks computed automatically by the server</li>
+                <li><i class="bi bi-person-check" aria-hidden="true"></i> Students only ever see their own grades</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="login-panel" aria-labelledby="loginTitle">
+        <div class="login-card card-surface">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <p class="eyebrow mb-1">Welcome back</p>
+                    <h2 id="loginTitle" class="h3 mb-0">Sign in to your account</h2>
+                </div>
+                <button type="button" class="btn btn-icon btn-icon-muted" data-theme-toggle aria-label="Switch to dark mode" title="Toggle light/dark mode">
+                    <i class="bi bi-moon-stars" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div id="loginAlert" class="alert d-none" role="alert"></div>
+
+            <form id="loginForm" novalidate autocomplete="on">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="username"
+                               placeholder="name@example.com" required aria-describedby="emailFeedback" />
+                        <div id="emailFeedback" class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="bi bi-key" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" id="password" name="password" autocomplete="current-password"
+                               required aria-describedby="passwordFeedback" />
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword" aria-label="Show password" aria-pressed="false">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
+                        </button>
+                        <div id="passwordFeedback" class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100" id="loginButton">
+                    <i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>Sign in
+                </button>
+            </form>
+
+            <details class="demo-accounts mt-4">
+                <summary>Demo accounts (testing only)</summary>
+                <p class="small text-body-secondary mt-2 mb-2">
+                    Choose an account to fill in the email. The demo password is listed in the project README.
+                </p>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-sm btn-demo" data-demo-email="andrea.garcia@example.com"><i class="bi bi-person-badge me-1" aria-hidden="true"></i>Faculty • Andrea Garcia (FAC-001)</button>
+                    <button type="button" class="btn btn-sm btn-demo" data-demo-email="michael.ramos@example.com"><i class="bi bi-person-badge me-1" aria-hidden="true"></i>Faculty • Michael Ramos (FAC-002)</button>
+                    <button type="button" class="btn btn-sm btn-demo" data-demo-email="juan.delacruz@example.com"><i class="bi bi-mortarboard me-1" aria-hidden="true"></i>Student • Juan Dela Cruz (2026-0001)</button>
+                    <button type="button" class="btn btn-sm btn-demo" data-demo-email="maria.santos@example.com"><i class="bi bi-mortarboard me-1" aria-hidden="true"></i>Student • Maria Santos (2026-0002)</button>
+                    <button type="button" class="btn btn-sm btn-demo" data-demo-email="pedro.reyes@example.com"><i class="bi bi-mortarboard me-1" aria-hidden="true"></i>Student • Pedro Reyes (2026-0003)</button>
+                </div>
+            </details>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script src="~/js/login.js" asp-append-version="true"></script>
+}

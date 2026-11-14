@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VillarKlarence_WebSystemFinalProject.Api/VillarKlarence_WebSystemFinalProject.Api.csproj" />
+    <Project Path="src/VillarKlarence_WebSystemFinalProject.Web/VillarKlarence_WebSystemFinalProject.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VillarKlarence_WebSystemFinalProject.Tests/VillarKlarence_WebSystemFinalProject.Tests.csproj" />
+  </Folder>
+</Solution>

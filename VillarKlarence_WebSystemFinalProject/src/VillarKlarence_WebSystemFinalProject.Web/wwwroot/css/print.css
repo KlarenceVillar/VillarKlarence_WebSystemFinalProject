@@ -1,0 +1,41 @@
+/* Print stylesheet (loaded with media="print"): a clean grade report. */
+
+@page { margin: 14mm; }
+
+html, body { background: var(--ac-white) !important; color: var(--ac-ink) !important; }
+
+.app-navbar, .app-footer, .skip-link, .splash, .toast-container,
+.profile-actions, .semester-tabs, #retryButton, .btn, .modal,
+.grade-cards, .stat-icon, #gradesAlert { display: none !important; }
+
+.page-enter, .stagger > *, .row-enter, .card-enter { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+.container-xxl { max-width: none !important; padding: 0 !important; }
+
+.print-header {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 3px solid var(--ac-gold);
+}
+.print-header img { border-radius: 50%; }
+.print-school { margin: 0; font-family: "Cinzel", Georgia, serif; font-size: 18pt; font-weight: 700; }
+.print-doc { margin: 0; font-size: 10pt; letter-spacing: .12em; text-transform: uppercase; }
+
+.card-surface { box-shadow: none !important; border: 1px solid var(--ac-ink) !important; background: var(--ac-white) !important; }
+.profile-header::before, .stat-card::after { display: none !important; }
+
+.grades-desktop { display: block !important; }
+.table-responsive { overflow: visible !important; }
+.grade-table { font-size: 10pt; }
+.grade-table thead th { background: var(--ac-surface) !important; color: var(--ac-ink) !important; border-bottom: 2px solid var(--ac-ink) !important; }
+.grade-table tr { page-break-inside: avoid; }
+.d-none.d-lg-table-cell { display: table-cell !important; }
+
+.remark-pill { border: 1px solid var(--ac-ink) !important; background: var(--ac-white) !important; color: var(--ac-ink) !important; }
+
+.print-date { display: block !important; }
+.row.g-3 { display: flex !important; flex-wrap: nowrap !important; }
+.row.g-3 > [class*="col-"] { flex: 1 1 0 !important; max-width: none !important; }

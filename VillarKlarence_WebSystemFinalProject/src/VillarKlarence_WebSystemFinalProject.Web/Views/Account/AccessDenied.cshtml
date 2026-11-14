@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Access denied";
+}
+<section class="container-xxl py-5">
+    <div class="status-card card-surface mx-auto text-center">
+        <img src="~/images/logo.png" asp-append-version="true" alt="" width="96" height="96" class="status-logo mb-3" />
+        <p class="status-code text-danger-emphasis" aria-hidden="true">403</p>
+        <h1 class="h2">Access denied</h1>
+        <p class="text-body-secondary mb-4">
+            Your account does not have permission to open this page. Faculty and students each have their own dashboard.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <a class="btn btn-primary" href="#" data-home-link><i class="bi bi-house-door me-1" aria-hidden="true"></i>Go to my dashboard</a>
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login" data-logout-link><i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>Sign in with another account</a>
+        </div>
+    </div>
+</section>

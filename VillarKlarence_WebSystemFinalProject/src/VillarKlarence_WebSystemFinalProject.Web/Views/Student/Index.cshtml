@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "My Grades";
+}
+<div class="container-xxl py-4">
+    @* Shown only when printing *@
+    <div class="print-header" aria-hidden="true">
+        <img src="~/images/logo.png" asp-append-version="true" alt="" width="64" height="64" />
+        <div>
+            <p class="print-school">UST Angelicum College</p>
+            <p class="print-doc">Student Grade Report</p>
+        </div>
+    </div>
+
+    @* Profile header *@
+    <section class="profile-header card-surface mb-4" aria-label="Student profile">
+        <div class="profile-avatar" aria-hidden="true" id="profileInitials">
+            <span class="skeleton skeleton-circle"></span>
+        </div>
+        <div class="profile-meta">
+            <p class="eyebrow mb-1">Student Dashboard</p>
+            <h1 class="page-title mb-1" id="profileName"><span class="skeleton skeleton-text w-50"></span></h1>
+            <p class="mb-0 text-body-secondary profile-details">
+                <span><i class="bi bi-person-vcard me-1" aria-hidden="true"></i>Student No. <strong id="profileNumber">…</strong></span>
+                <span class="d-none d-sm-inline" aria-hidden="true">•</span>
+                <span><i class="bi bi-envelope me-1" aria-hidden="true"></i><span id="profileEmail">…</span></span>
+            </p>
+        </div>
+        <div class="profile-actions">
+            <button type="button" class="btn btn-outline-primary" id="refreshButton">
+                <i class="bi bi-arrow-clockwise me-1" aria-hidden="true"></i>Refresh
+            </button>
+            <button type="button" class="btn btn-primary" id="printButton">
+                <i class="bi bi-printer me-1" aria-hidden="true"></i>Print
+            </button>
+        </div>
+    </section>
+
+    @* Summary cards *@
+    <section class="row g-3 mb-4 stagger" aria-label="Grade summary">
+        <div class="col-12 col-sm-4">
+            <div class="stat-card card-surface">
+                <span class="stat-icon stat-icon-blue" aria-hidden="true"><i class="bi bi-book"></i></span>
+                <div>
+                    <p class="stat-label">Subjects</p>
+                    <p class="stat-value" id="summarySubjects">—</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <div class="stat-card card-surface">
+                <span class="stat-icon stat-icon-gold" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                <div>
+                    <p class="stat-label">Average grade</p>
+                    <p class="stat-value" id="summaryAverage">—</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <div class="stat-card card-surface">
+                <span class="stat-icon stat-icon-success" aria-hidden="true"><i class="bi bi-award"></i></span>
+                <div>
+                    <p class="stat-label">Highest remark</p>
+                    <p class="stat-value" id="summaryHighest">—</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-surface table-card" aria-labelledby="gradesHeading">
+        <div class="table-toolbar">
+            <h2 id="gradesHeading" class="h5 mb-0">My grades</h2>
+            <div class="semester-tabs" role="tablist" aria-label="Filter by semester" id="semesterTabs">
+                <button type="button" class="semester-tab active" role="tab" aria-selected="true" data-semester="">All</button>
+                <button type="button" class="semester-tab" role="tab" aria-selected="false" data-semester="1st Semester" tabindex="-1">1st Semester</button>
+                <button type="button" class="semester-tab" role="tab" aria-selected="false" data-semester="2nd Semester" tabindex="-1">2nd Semester</button>
+                <button type="button" class="semester-tab" role="tab" aria-selected="false" data-semester="Summer" tabindex="-1">Summer</button>
+            </div>
+        </div>
+
+        <div id="gradesAlert" class="alert alert-danger mx-3 d-none" role="alert">
+            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
+                <span id="gradesAlertText"></span>
+                <button type="button" class="btn btn-sm btn-outline-danger" id="retryButton"><i class="bi bi-arrow-repeat me-1" aria-hidden="true"></i>Try again</button>
+            </div>
+        </div>
+
+        <div id="gradesPanel" role="tabpanel" aria-labelledby="gradesHeading">
+            @* Desktop / tablet table *@
+            <div class="table-responsive d-none d-md-block grades-desktop">
+                <table class="table align-middle grade-table mb-0">
+                    <caption class="visually-hidden">My grades by subject</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Subject code</th>
+                            <th scope="col">Subject name</th>
+                            <th scope="col" class="text-end">Grade</th>
+                            <th scope="col">Remarks</th>
+                            <th scope="col">Semester</th>
+                            <th scope="col">School year</th>
+                            <th scope="col" class="d-none d-lg-table-cell">Faculty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradeRows"></tbody>
+                </table>
+            </div>
+
+            @* Mobile cards *@
+            <div class="grade-cards d-md-none stagger" id="gradeCards"></div>
+        </div>
+
+        <div id="emptyState" class="empty-state d-none">
+            <img src="~/images/logo.png" asp-append-version="true" alt="" width="72" height="72" />
+            <h3 class="h5 mt-3" id="emptyTitle">No grades posted yet</h3>
+            <p class="text-body-secondary mb-0" id="emptyText">Your grades will appear here as soon as your instructors post them.</p>
+        </div>
+
+        <div class="table-footer">
+            <p class="small text-body-secondary mb-0" id="resultSummary" aria-live="polite">Loading your grades…</p>
+            <p class="small text-body-secondary mb-0 print-date" id="printDate"></p>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script src="~/js/student-dashboard.js" asp-append-version="true"></script>
+}
